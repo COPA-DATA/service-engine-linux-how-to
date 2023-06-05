@@ -117,7 +117,7 @@ To connect the machine with the Device Management, follow these steps:
         A web browser will open and asks you to authenticate yourself via the Identity Service.
 5. Open the Device Management UI in the web browser and verify that the project was uploaded successfully.
 6. Switch to the deployment tasks overview and create a deployment task for your Linux Service Engine  
-    1. Untick the checkbox ** when you create the deployment task.  
+    1. Untick the checkbox *Use device-specific Project ID* when you create the deployment task.  
     2. Select the desired deployment type *instant* or *schedule*
     3. Create the deployment task.
 7. Open the logs to see the progress of the deployment task
