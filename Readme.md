@@ -34,9 +34,9 @@ The following steps will guide you step-by-step through the installation procedu
 Follow theses steps to add COPA-DATA's APT repository on Ubuntu
 
 1. Download and install the repository's gpg key  
-`wget -O- http://repository.copadata.com/zenon/12/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
+`wget -O- https://repository.copadata.com/zenon/12/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
 2. Add the repository to the list of remote repositories  
-`echo "deb [arch=amd64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] http://repository.copadata.com/zenon/12/release/ jammy main" | sudo tee /etc/apt/sources.list.d/copa-data.list`
+`echo "deb [arch=amd64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ jammy main" | sudo tee /etc/apt/sources.list.d/copa-data.list`
 3. Update the local package index files for the repository  
    `sudo apt update`
 
@@ -45,9 +45,9 @@ Follow theses steps to add COPA-DATA's APT repository on Ubuntu
 Follow theses steps to add COPA-DATA's APT repository on Raspberry PI OS
 
 1. Download and install the repository's gpg key  
-`wget -O- http://repository.copadata.com/zenon/12/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
+`wget -O- https://repository.copadata.com/zenon/12/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
 2. Add the repository to the list of remote repositories  
-`echo "deb [arch=arm64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] http://repository.copadata.com/zenon/12/release/ bullseye main" | sudo tee /etc/apt/sources.list.d/copa-data.list`
+`echo "deb [arch=arm64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ bullseye main" | sudo tee /etc/apt/sources.list.d/copa-data.list`
 3. Update the local package index files for the repository  
    `sudo apt update`
 
