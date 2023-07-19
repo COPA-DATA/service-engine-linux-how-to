@@ -52,15 +52,14 @@ Follow theses steps to add COPA-DATA's APT repository on Raspberry PI OS
    `sudo apt update`
 
 
-## Install required packages
-The following steps are valid for Ubuntu and Raspberry PI OS
+## Install service-engine package
+The installation procedure is carried out on the command line interface and is valid for Ubuntu and Raspberry PI OS.
 
-1. Install the `locales-all` package, which is required by the Service Engine  
-    `sudo apt install locales-all`
-2. Install the Service Engine package  
-    `sudo apt install service-engine`
-3. Install the `iiot-cli-12-0` package  
-    `sudo apt install iiot-cli-12`
+1. Install the Service Engine package  
+    `sudo apt install service-engine`  
+    This will install the Service Engine and all required software packages on your system.  
+
+**Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-12`, as they are required for the flawless functionality of the Service Engine.
 
 ## Configure a network license
 
