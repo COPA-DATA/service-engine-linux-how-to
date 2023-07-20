@@ -4,62 +4,57 @@ This guide helps you with the initial installation and configuration of the zeno
 
 ## Requirements
 
-- Ubuntu 22.04 or Rasperry Pi OS (bullseye)  
-    - amd64 or AARCH64 only
-    - Raspberry PI model 4B or newer
-    - Root permissions
-    - A working internet connection
-    - If you have the need for a different Linux distribution, please contact pm@copadata.com
+**System Requirements**
+- A Linux device satisfying one of the following hardware and OS combinations
+    | Supported Architecture | Supported Operating System | Tested on HW |
+    | - | - | - |
+    | amd64 | Ubuntu 22.04 |  64 Bit VM, regular PC or industrial PC |
+    | arm64 (aarch64) | Debian 11 | Siemens IoT2050 (Industrial OS), Raspberry Pi 4 (Raspberry Pi OS 11 64-bit) |
+- Root permissions
+- A working internet connection  
 
+**License Requirements**
 - A machine with the zenon License Manager installed and an available network license
-    - Make sure to have a suitable license with the desired functionality (drivers, process gateways) for the intended use case
-    - This machine acts as license server and the license needs to be shared for network access. Therefore this machine must be accessible from the Linux machine in order to retrieve a license.
-    - See [zenon Online Help](https://onlinehelp.copadata.com/) in the licensing section for more information on this topic
+- Make sure to have a suitable license with the desired functionality (drivers, process gateways) for the intended use case.
+- This machine acts as license server and the license needs to be shared for network access. Therefore this machine must be accessible from the Linux machine in order to retrieve a license.
+- See [zenon Online Help](https://onlinehelp.copadata.com/) in the licensing section for more information on this topic
 
-- An optional installation of the zenon IIoT Services version 12.0 or later is recommended and used in this guide  
-    - It does not matter if the installation is done using Windows or Docker.  
-    - Have a look at the [zenon Online Help](https://onlinehelp.copadata.com/) and the *Getting Started Guide for zenon IIoT Services*
+**IIoT Services installation**
+- An optional installation of the zenon IIoT Services version 12.0 or later is recommended and used in this guide.
+- It does not matter if the installation is done using Windows or Docker.  
+- Have a look at the [zenon Online Help](https://onlinehelp.copadata.com/) and the *Getting Started Guide for zenon IIoT Services*.
 
+**Engineering Studio**
 - Your engineering machine running Windows and zenon Engineering Studio 12
-    - Ensure to have the Device Management Interface Components Version 12 installed, which are available on the zenon 12 installation media.
+- Ensure to have the Device Management Interface Components Version 12 installed, which are available on the zenon 12 installation media.
 
 
 # Installation steps
 
 The following steps will guide you step-by-step through the installation procedure.  
 1. Login to the Linux machine by means of a physical keyboard, mouse and display, or just connect to it using a remote shell using ssh. Typically a user account with root permissions is required to perform the installation steps.  
-2. Ensure to configure the correct repository based on your Linux installation.
 
-## Add repository on Ubuntu
-Follow theses steps to add COPA-DATA's APT repository on Ubuntu
-
+## Setup the remote APT repository
 1. Download and install the repository's gpg key  
 `wget -O- https://repository.copadata.com/zenon/12/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
-2. Add the repository to the list of remote repositories  
-`echo "deb [arch=amd64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ jammy main" | sudo tee /etc/apt/sources.list.d/copa-data.list`
+2. Add the APT repository to the list of remote repositories and ensure to use the correct architecture for your hardware configuration  
+    - Command for **amd64:**  
+        `echo "deb [arch=amd64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ jammy main" | sudo tee /etc/apt/sources.list.d/copa-data.list`  
+    - Command for **arm64:**  
+        `echo "deb [arch=arm64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ bullseye main" | sudo tee /etc/apt/sources.list.d/copa-data.list`  
 3. Update the local package index files for the repository  
    `sudo apt update`
 
-
-## Add repository on Raspberry PI OS
-Follow theses steps to add COPA-DATA's APT repository on Raspberry PI OS
-
-1. Download and install the repository's gpg key  
-`wget -O- https://repository.copadata.com/zenon/12/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
-2. Add the repository to the list of remote repositories  
-`echo "deb [arch=arm64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ bullseye main" | sudo tee /etc/apt/sources.list.d/copa-data.list`
-3. Update the local package index files for the repository  
-   `sudo apt update`
 
 
 ## Install service-engine package
-The installation procedure is carried out on the command line interface and is valid for Ubuntu and Raspberry PI OS.
+The installation procedure is carried out on the command line interface and is valid for both architectures.
 
 1. Install the Service Engine package  
     `sudo apt install service-engine`  
     This will install the Service Engine and all required software packages on your system.  
 
-**Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-12`, as they are required for the flawless functionality of the Service Engine.
+**Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-12`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
 
 ## Configure a network license
 
@@ -137,7 +132,8 @@ To connect the machine with the Device Management, follow these steps:
 
 # Troubleshoot and How-to
 
-In case of troubles when performing the installation and configuration steps, make sure to have a look at the troubleshooting section below.
+In case of troubles when performing the installation and configuration steps, make sure to have a look at the troubleshooting section below.  
+Reach out to support@copadata.com, if you need further assistance.
 
 ## Use Diagnosis Viewer for viewing logs
 The Service Engine on Linux also includes the Log Server for viewing and retrieving log messages. To use it, open the Diagnosis Viewer on your Windows machine and connect the Diagnosis Viewer to the Log Server of the Linux machine (*File > Connect to ...*).
