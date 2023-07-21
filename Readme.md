@@ -9,7 +9,7 @@ This guide helps you with the initial installation and configuration of the zeno
     | Supported Architecture | Supported Operating System | Tested on HW |
     | - | - | - |
     | amd64 | Ubuntu 22.04 |  64 Bit VM, regular PC or industrial PC |
-    | arm64 (aarch64) | Debian 11 | Siemens IoT2050 (Industrial OS), Raspberry Pi 4 (Raspberry Pi OS 11 64-bit) |
+    | arm64 (aarch64) | Debian 11 | Siemens IOT2050 (SIMATIC Industrial OS), Raspberry Pi 4 (Raspberry Pi OS 11 64-bit) |
 - Root permissions
 - A working internet connection  
 
@@ -87,9 +87,9 @@ If your IIoT Services installation already uses a trusted certificate, you can i
 
 If the certificate is not trusted, follow these steps:
 1. Open the Service Configuration Studio of the IIoT Services and download the CA certificate to your machine.
-2. Transfer the CA certificate to the Linux machine using an appropriate mechanism like `scp`, `ftp` or network file shares. [SCP Manpages](https://manpages.ubuntu.com/manpages/trusty/man1/scp.1.html)
+2. Transfer the CA certificate to the Linux machine using an appropriate mechanism like `scp`, `ftp` or network file shares. [Link to SCP Manpages](https://manpages.ubuntu.com/manpages/trusty/man1/scp.1.html)
 3. Copy the CA certificate file to `/usr/local/share/ca-certificates`. The actual name of the file does not matter.
-4. Update the system's trusted CA certificatse using `sudo update-ca-certificates`.  This will update the CA certificates and add the IIoT Service's certificate to the trusted list.
+4. Update the system's trusted CA certificates using `sudo update-ca-certificates`.  This will update the CA certificates and add the IIoT Service's certificate to the trusted list.
 5. Use the curl verification command above to verify that the certificate is trusted.
 
 
@@ -145,8 +145,8 @@ It is also possible to restart them if necessary with `sudo systemctl restart <s
 
 ## Read the logs
 The logs from the Service Engine or Device Agent can either be retrieved via the zenon Log Server or also via `journalctl -u <service-name>`.  
-Use `journalctl -u serviceEngine.service` and `journalctl -u device-agent.service` to the retrieve the respective logs.  
-**You may need to scroll to reach the correct date and time.**
+Use `journalctl -u serviceEngine.service` and `journalctl -u device-agent.service` to retrieve the respective logs.  
+**You may need to scroll, to reach the desired date and time.**
 
 ## Check the license status of the Service Engine
-On startup the Service Engine checks for an available license. If no license server and/or license serial number is configured, the Service Engine won't start up properly. In this case, this can be checked via `sudo systemctl status serviceEngine.service`
+On startup the Service Engine checks for an available license. If no license server and/or license serial number is configured, the Service Engine won't start up properly. In this case, this can be checked via `sudo systemctl status serviceEngine.service`. Also make sure to provide a valid license serial number and license server via the file `/etc/copa-data/License.ini`.
