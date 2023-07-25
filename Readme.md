@@ -9,7 +9,7 @@ This guide helps you with the initial installation and configuration of the zeno
     | Supported Architecture | Supported Operating System | Tested on HW |
     | - | - | - |
     | amd64 | Ubuntu 22.04 |  64 Bit VM, regular PC or industrial PC |
-    | arm64 (aarch64) | Debian 11 | Siemens IOT2050 (SIMATIC Industrial OS), Raspberry Pi 4 (Raspberry Pi OS 11 64-bit) |
+    | arm64 (aarch64) | Debian 11 | Siemens IOT2050 (IOT2050 Example Image V1.2.2), Raspberry Pi 4 (Raspberry Pi OS 11 64-bit) |
 - Root permissions
 - A working internet connection  
 
