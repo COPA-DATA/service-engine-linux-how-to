@@ -1,0 +1,40 @@
+version: '3.7'
+
+networks:
+  serviceengine-network:
+    driver: bridge
+
+services:
+  service-engine:
+    container_name: service-engine
+    hostname: service-engine
+    volumes:
+      - ${CONFIG_PATH}:/etc/copa-data
+    image: 'copadata/service-engine:${TAG_VERSION:-latest}'
+    stdin_open: true
+    tty: true
+    environment:
+      - RUNTIME_LICENSING_SERIAL0=${RUNTIME_LICENSE_SERIAL}
+      - RUNTIME_LICENSING_SERIAL0_LOCATION=${RUNTIME_LICENSE_SERVER}
+      - PROCESSGATEWAY_LICENSING_SERIAL0=${PROCESSGATEWAY_LICENSE_SERIAL}
+      - PROCESSGATEWAY_LICENSING_SERIAL0_LOCATION=${PROCESSGATEWAY_LICENSE_SERVER}
+      - LOGIC_LICENSING_SERIAL0=${LOGIC_LICENSE_SERIAL}
+      - LOGIC_LICENSING_SERIAL0_LOCATION=${LOGIC_LICENSE_SERVER}
+    networks:
+      serviceengine-network:
+        aliases:
+          - service-engine
+
+  zenon-logging-server:
+    container_name: zenon-logging-server
+    hostname: zenon-logging-server
+    volumes:
+      - ${CONFIG_PATH}:/etc/copa-data
+      - ${LOGGING_PATH}:/var/log/copa-data
+    image: 'copadata/zenon-logging-server:${TAG_VERSION:-latest}'
+    ports:
+      - "50780:50780"
+    networks:
+      serviceengine-network:
+        aliases:
+          - zenon-logging-server

@@ -2,6 +2,8 @@
 
 This guide helps you with the initial installation and configuration of the zenon Service Engine on Linux.
 
+**Service Engine in Docker:** If you are looking for the instructions for the Service Engine in Docker, [you can find them here](./Service-Engine-on-Docker.md).
+
 ## Requirements
 
 **System Requirements**
