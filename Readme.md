@@ -33,7 +33,7 @@ This guide helps you with the initial installation and configuration of the zeno
 
 # Installation steps
 
-The following steps will guide you step-by-step through the installation procedure.  
+The following steps will guide you step-by-step through the installation procedure of the Service Engine on native Linux.  
 1. Login to the Linux machine by means of a physical keyboard, mouse and display, or just connect to it using a remote shell using ssh. Typically a user account with root permissions is required to perform the installation steps.  
 
 ## Setup the remote APT repository
@@ -56,7 +56,7 @@ The installation procedure is carried out on the command line interface and is v
     `sudo apt install service-engine`  
     This will install the Service Engine and all required software packages on your system.  
 
-**Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-12`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
+**Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-12-0`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
 
 ## Configure a network license
 
