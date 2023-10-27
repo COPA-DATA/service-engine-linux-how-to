@@ -45,7 +45,8 @@ The following steps will guide you step-by-step through the installation procedu
     - Command for **arm64:**  
         `echo "deb [arch=arm64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ bullseye main" | sudo tee /etc/apt/sources.list.d/copa-data.list`  
 3. Update the local package index files for the repository  
-   `sudo apt update`
+   `sudo apt update`  
+   **IOT2050 only:** If you run into troubles updating the packages, have a look at the [troubleshooting section](#iot2050-error-on-updating-packages).
 
 
 
@@ -152,3 +153,14 @@ Use `journalctl -u serviceEngine.service` and `journalctl -u device-agent.servic
 
 ## Check the license status of the Service Engine
 On startup the Service Engine checks for an available license. If no license server and/or license serial number is configured, the Service Engine won't start up properly. In this case, this can be checked via `sudo systemctl status serviceEngine.service`. Also make sure to provide a valid license serial number and license server via the file `/etc/copa-data/License.ini`.
+
+## IOT2050: error on updating packages
+
+When running the command `sudo apt update` after importing the keyring on the IOT2050 with Siemens Industrial OS, the following error message might be shown.
+
+```
+The following signatures couldn't be verified because the public key is not available: NO_PUBKEY <key>
+```
+
+To solve this problem, you need to check the file permissions for `/usr/share/keyrings/copadata-archive-keyring.gpg` to be set to `-rw-r--r--`  e.g. with `ls -lah /usr/share/keyrings/copadata-archive-keyring.gpg`. If the permissions do not match `-rw-r--r--`  you can apply the minimum permissions with `sudo chmod oga+r /usr/share/keyrings/copadata-archive-keyring.gpg`.
+Run `sudo apt update` again and verify that the packages can be updated.
