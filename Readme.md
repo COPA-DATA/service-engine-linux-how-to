@@ -22,13 +22,13 @@ This guide helps you with the initial installation and configuration of the zeno
 - See [zenon Online Help](https://onlinehelp.copadata.com/) in the licensing section for more information on this topic
 
 **IIoT Services installation**
-- An optional installation of the zenon IIoT Services version 12.0 or later is recommended and used in this guide.
+- An optional installation of the zenon IIoT Services version 14.0 or later is recommended and used in this guide.
 - It does not matter if the installation is done using Windows or Docker.  
 - Have a look at the [zenon Online Help](https://onlinehelp.copadata.com/) and the *Getting Started Guide for zenon IIoT Services*.
 
 **Engineering Studio**
-- Your engineering machine running Windows and zenon Engineering Studio 12
-- Ensure to have the Device Management Interface Components Version 12 installed, which are available on the zenon 12 installation media.
+- Your engineering machine running Windows and zenon Engineering Studio 14
+- Ensure to have the Device Management Interface Components Version 14 installed, which are available on the zenon 14 installation media.
 
 
 # Installation steps
@@ -38,12 +38,12 @@ The following steps will guide you step-by-step through the installation procedu
 
 ## Setup the remote APT repository
 1. Download and install the repository's gpg key  
-`wget -O- https://repository.copadata.com/zenon/12/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
+`wget -O- https://repository.copadata.com/zenon/14/release/copadata-archive-keyring.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/copadata-archive-keyring.gpg > /dev/null`
 2. Add the APT repository to the list of remote repositories and ensure to use the correct architecture for your hardware configuration  
     - Command for **amd64:**  
-        `echo "deb [arch=amd64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ jammy main" | sudo tee /etc/apt/sources.list.d/copa-data.list`  
+        `echo "deb [arch=amd64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/14/release/ jammy main" | sudo tee /etc/apt/sources.list.d/copa-data.list`  
     - Command for **arm64:**  
-        `echo "deb [arch=arm64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/12/release/ bullseye main" | sudo tee /etc/apt/sources.list.d/copa-data.list`  
+        `echo "deb [arch=arm64 signed-by=/usr/share/keyrings/copadata-archive-keyring.gpg] https://repository.copadata.com/zenon/14/release/ bullseye main" | sudo tee /etc/apt/sources.list.d/copa-data.list`  
 3. Update the local package index files for the repository  
    `sudo apt update`  
    **IOT2050 only:** If you run into troubles updating the packages, have a look at the [troubleshooting section](#iot2050-error-on-updating-packages).
@@ -57,7 +57,7 @@ The installation procedure is carried out on the command line interface and is v
     `sudo apt install service-engine`  
     This will install the Service Engine and all required software packages on your system.  
 
-**Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-12-0`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
+**Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-14-0`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
 
 ## Configure a network license
 
