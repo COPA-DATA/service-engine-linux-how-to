@@ -7,7 +7,7 @@ This guide helps you with the initial installation and configuration of the zeno
 ## Requirements
 
 **System Requirements**
-- A Linux device satisfying one of the following hardware and OS combinations
+- A Linux device fulfilling one of the following hardware and OS combinations
     | Supported Architecture | Supported Operating System | Tested on HW |
     | - | - | - |
     | amd64 | Ubuntu 22.04 |  64 Bit VM, regular PC or industrial PC |
@@ -34,7 +34,7 @@ This guide helps you with the initial installation and configuration of the zeno
 # Installation steps
 
 The following steps will guide you step-by-step through the installation procedure of the Service Engine on native Linux.  
-1. Login to the Linux machine by means of a physical keyboard, mouse and display, or just connect to it using a remote shell using ssh. Typically a user account with root permissions is required to perform the installation steps.  
+1. Login to the Linux machine by means of a physical keyboard, mouse and display, or just connect to it using a remote shell via ssh. Typically a user account with root permissions is required to perform the installation steps.  
 
 ## Setup the remote APT repository
 1. Download and install the repository's gpg key  
@@ -61,7 +61,7 @@ The installation procedure is carried out on the command line interface and is v
 
 ## Configure a network license
 
-- Open the file `/etc/copa-data/License.ini` using `nano` or another text editor and insert the following configuration with the appropriate *license serial number* and *license server*.  
+- Open the file `/etc/copa-data/License.ini` using `nano` or another text editor and insert the following configuration with the appropriate *license serial number* and *license server*. Typically root permission is needed to edit the file.
     `sudo nano /etc/copa-data/License.ini`  
     *Hint: File names on Linux are case sensitive.*  
  
