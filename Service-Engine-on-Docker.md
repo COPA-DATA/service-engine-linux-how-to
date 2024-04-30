@@ -20,17 +20,24 @@ The zenon Service Engine is also available as Ubuntu based Docker image. This im
 
 To run the Service Engine as Docker container on Linux, perform the following steps:
 
-1. Use the files `.env` and `docker-compose.yml` and copy them to a local folder `docker-files` of your choice.  
-**Hint:** You can also find them as a package in the download section of the [COPA-DATA homepage](https://www.copadata.com/de/downloads/product-downloads/).
-2. Create a `data` folder inside `docker-files`, which will be used to store the zenon project and the configuration files of the Service Engine.  
-3. Create a `logs` folder inside `docker-files`, which will be used to store the zenon logs.      
-4. Adapt the content of `.env` and provide the necessary configuration:
-    - Provide the appropriate license serial and license server
-    - Provide the configuration folder `data`via the variable `CONFIG_PATH`
-    - Provide the desired logging folder `logs`via the variable `LOGGING_PATH`
-5. Compile your zenon project in the Engineering Studio on your host machine and copy the project folder (e.g. "C:\Users\Public\Documents\zenon_Projects\<Project Name>") to the directory `data`.
-6. Create a file called `zenon6.ini` in the directory `data` and add the following content:
-**Hint:** Make sure to adapt the placeholder `<Project Name>` accordingly.
+1. Clone this repo or download it and extract it to a location of your choice.
+2. Note that the docker-compose folder already has two directories in it. `data` and `logs`.  
+These are referenced as volumes in the `.env` file
+    - The data directory includes the zenon6.ini and a dummy project
+        - `zenon6.ini` defines startup-parameters of the zenon Service Engine
+        - `DUMMY_PROJECT_14` is an empty zenon project. Compiled in the zenon Engineering Studio
+    - The logs directory is empty
+        - The zenon logging server will write it's log files into here
+3. Adapt the content of `.env` and provide the necessary configuration:
+    - Provide the appropriate license serial and license server for the components needed
+    - Optional: Provide your own configuration folder `data` via the variable `CONFIG_PATH`
+    - Optional: Provide your own logging folder `logs` via the variable `LOGGING_PATH`  
+
+    **Follow steps 4-5 to load your own project**  
+
+4. Compile your own zenon project in the Engineering Studio on your host machine and copy the project folder (e.g. "C:\Users\Public\Documents\zenon_Projects\<Project Name>") to the directory `data`.
+5. Edit the file `zenon6.ini` in the directory `data` to match your own project:  
+Pay attention that the folder path is case sensitive in Linux.
     ```ini
     [PATH]
     VBF30=/etc/copa-data/<Project Name>
@@ -38,9 +45,7 @@ To run the Service Engine as Docker container on Linux, perform the following st
     [DEFAULT]
     DEFANWENDUNG30=<Project Name>
     ```
-**Pay attention that the folder path is case sensitive in Linux.**
-8. Pull the Service Engine image with the command `docker compose pull`
-9. Start the Service Engine using `docker compose up`
+6. Pull and start the Service Engine using `docker compose up`
 
 **Congratulations, you are running the Service Engine on Linux using docker.**
 
