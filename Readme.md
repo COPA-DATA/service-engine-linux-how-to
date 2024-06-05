@@ -154,13 +154,45 @@ Use `journalctl -u serviceEngine.service` and `journalctl -u device-agent.servic
 ## Check the license status of the Service Engine
 On startup the Service Engine checks for an available license. If no license server and/or license serial number is configured, the Service Engine won't start up properly. In this case, this can be checked via `sudo systemctl status serviceEngine.service`. Also make sure to provide a valid license serial number and license server via the file `/etc/copa-data/License.ini`.
 
-## IOT2050: error on updating packages
+## IOT2050: possible errors
 
-When running the command `sudo apt update` after importing the keyring on the IOT2050 with Siemens Industrial OS, the following error message might be shown.
+1. 
+    When running the command `sudo apt update` after importing the keyring on the IOT2050 with Siemens Industrial OS, the following error message might be shown.
 
-```
-The following signatures couldn't be verified because the public key is not available: NO_PUBKEY <key>
-```
+    ```
+    The following signatures couldn't be verified because the public key is not available: NO_PUBKEY <key>
+    ```
 
-To solve this problem, you need to check the file permissions for `/usr/share/keyrings/copadata-archive-keyring.gpg` to be set to `-rw-r--r--`  e.g. with `ls -lah /usr/share/keyrings/copadata-archive-keyring.gpg`. If the permissions do not match `-rw-r--r--`  you can apply the minimum permissions with `sudo chmod oga+r /usr/share/keyrings/copadata-archive-keyring.gpg`.
-Run `sudo apt update` again and verify that the packages can be updated.
+    To solve this problem, you need to check the file permissions for `/usr/share/keyrings/copadata-archive-keyring.gpg` to be set to `-rw-r--r--`  e.g. with `ls -lah /usr/share/keyrings/copadata-archive-keyring.gpg`. If the permissions do not match `-rw-r--r--`  you can apply the minimum permissions with `sudo chmod oga+r /usr/share/keyrings/copadata-archive-keyring.gpg`.
+    Run `sudo apt update` again and verify that the packages can be updated.
+2. 
+    When running the command `sudo apt install service-engine`on the IOT2050 with SIemens Industrial OS, the following error message might be shown.
+
+     ```
+     The following packages have unmet dependencies: ...
+     ```
+
+     To solve this problem you need to follow these steps:
+     1. Navigate to the following directory by using `cd /etc/apt`
+     2. If not already there, create a file called `sources.list`by using `sudo touch "sources.list"`
+     3. Open the file with an editor of your choise e.g. by `sudo nano "sources.list"`
+     4. Paste the following content into the file `deb http://ftp.at.debian.org/debian bullseye main`
+     5. Save the file and run `sudo apt update`and `sudo apt upgrade`
+     6. Run `sudo apt install service-engine`again and verify that the packages can be updated.
+3. 
+    When trying to start the Service Engine with a set project on the IOT2050 with Siemens Industrial OS, there might be an error message stating that the project files could not be found.
+
+    To solve this problem you need to adapt the permissions of your project. To do so you need to follow these steps:
+    1. Run the following command to fix the permissions 
+       ```
+        if [ -z "$CD_SYSTEM" ]; then
+        CD_SYSTEM=${CD_SYSTEM:-/etc/copa-data}
+        fi
+        sudo chown $USER:zenon -R $CD_SYSTEM
+        find $CD_SYSTEM -type f -exec chmod 660 {} \;
+        find $CD_SYSTEM -type d -exec chmod 770 {} \;
+        chmod g+s  $CD_SYSTEM 
+        ```
+    2. Use `sudo usermod -a -G zenon $USER` to add you user to the zenon group.
+    Try to start the Service Engine again and verify that the project files are found
+
