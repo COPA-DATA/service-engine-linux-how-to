@@ -102,7 +102,7 @@ Detailed information about the provided functionalities can be found in the [zen
 
 To connect the machine with the Device Management, follow these steps:
 1. Setup the device agent and register the machine with the Device Management  
-    `iiot-cli setup-agent -u https://<url-of-iiot-services>:<port-of-iiot-services> --use-device-code`  
+    `iiot-cli device setup-agent https://<url-of-iiot-services>:<port-of-iiot-services> --use-device-code`  
 2. Follow the instructions and open the Identity Service in a web browser to authenticate with your IIoT Services administrator account. The registration of the device will automatically continue as soon as you are authenticated and have accepted the CLI grant request shown in the Identity Service.  
 3. Verify the connection status of the device in the Device Management's UI by opening the Service Configuration Studio.  
     The device needs to be in state *Online*  
