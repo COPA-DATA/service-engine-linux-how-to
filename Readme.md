@@ -59,6 +59,9 @@ The installation procedure is carried out on the command line interface and is v
 
 **Hint:** Ensure to also let the system install the packages `locales-all` and `iiot-cli-14-0`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
 
+**Hint No.2:** License Manager Automation is **not** installed automatically. An Installation is only necessary, if the network license is not used and a license is activated locally instead (not available for docker).
+`sudo apt install license-manager-automation`
+
 ## Configure a network license
 
 - Open the file `/etc/copa-data/License.ini` using `nano` or another text editor and insert the following configuration with the appropriate *license serial number* and *license server*. Typically root permission is needed to edit the file.
