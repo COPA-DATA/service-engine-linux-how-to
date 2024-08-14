@@ -57,9 +57,9 @@ The installation procedure is carried out on the command line interface and is v
     `sudo apt install service-engine`  
     This will install the Service Engine and all required software packages on your system.  
 
-**Hints:** 
-    - Ensure to also let the system install the packages `locales-all` and `iiot-cli-14-0`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
-    - If licenses should be handled locally instead of using a network license, ensure that the package `license-manager-automation`is installed (not available for docker).
+**Hints**:
+- Ensure to also let the system install the packages `locales-all` and `iiot-cli-14-0`, as they are required for the flawless functionality of the Service Engine. Those packages are installed by default along with the `service-engine` package.
+- If licenses should be handled locally instead of using a network license, ensure that the package `license-manager-automation`is installed (not available for docker).
 
 
 ## Configure a network license
